@@ -11,7 +11,6 @@ vim.cmd('silent! do FileType')
 
 mason_lspconfig.setup({
 	ensure_installed = {
-		'tsserver',
 		'eslint',
 		'cssls',
 		'yamlls',
