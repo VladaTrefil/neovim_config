@@ -1,0 +1,69 @@
+# ────────────────────────────────────────────────────────────────────────────────────────────────────
+#   Reference: {{{
+
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+#   }}}
+# ────────────────────────────────────────────────────────────────────────────────────────────────────
+
+#     __                                                              __      
+#    /\ \__                                                __        /\ \__   
+#    \ \ ,_\  __  __  _____      __    ____    ___   _ __ /\_\  _____\ \ ,_\  
+#     \ \ \/ /\ \/\ \/\ '__`\  /'__`\ /',__\  /'___\/\`'__\/\ \/\ '__`\ \ \/  
+#      \ \ \_\ \ \_\ \ \ \L\ \/\  __//\__, `\/\ \__/\ \ \/ \ \ \ \ \L\ \ \ \_ 
+#       \ \__\\/`____ \ \ ,__/\ \____\/\____/\ \____\\ \_\  \ \_\ \ ,__/\ \__\
+#        \/__/ `/___/> \ \ \/  \/____/\/___/  \/____/ \/_/   \/_/\ \ \/  \/__/
+#                 /\___/\ \_\                                     \ \_\       
+#                 \/__/  \/_/                                      \/_/       
+
+priority -50
+
+extends javascript
+
+snippet int "interface"
+interface ${1} {
+	${2}
+}
+endsnippet
+
+snippet namespc "namespace"
+namespace ${1} {
+	${2}
+}
+endsnippet
+
+snippet type "type" b
+type ${1} = ${2:\{\}}
+endsnippet
+
+priority -49
+
+snippet fun "function (named)" b
+function ${1:function_name} (${2:argument}: ${3:argument_type}) {
+	${VISUAL}$0
+}
+endsnippet

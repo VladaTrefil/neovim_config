@@ -1,0 +1,70 @@
+# ────────────────────────────────────────────────────────────────────────────────────────────────────
+#   Reference: {{{
+
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+#   }}}
+# ────────────────────────────────────────────────────────────────────────────────────────────────────
+
+#     ______  __       __        
+#    /\  _  \/\ \     /\ \       
+#    \ \ \L\ \ \ \    \ \ \      
+#     \ \  __ \ \ \  __\ \ \  __ 
+#      \ \ \/\ \ \ \L\ \\ \ \L\ \
+#       \ \_\ \_\ \____/ \ \____/
+#        \/_/\/_/\/___/   \/___/ 
+
+
+priority -49
+
+global !p
+def comment_char(ft):
+	hash = ['snippets', 'zsh', 'i3config', 'sh', 'conf']
+
+	if ft in hash:
+		return '#' 
+	else:
+		return '"'
+endglobal
+
+snippet fold "Vim Fold" b
+`!p snip.rv = comment_char(snip.ft) + (" " * 1) + ("─" * 100)`
+`!p snip.rv = comment_char(snip.ft)` ${1}: {{{
+
+${0}
+
+`!p snip.rv = comment_char(snip.ft)` }}}
+`!p snip.rv = comment_char(snip.ft) + (" " * 1) + ("─" * 100)`
+endsnippet
+
+snippet fold:second "Vim Fold second" b
+`!p snip.rv = comment_char(snip.ft)` ${1}: {{{
+
+${0}
+
+`!p snip.rv = comment_char(snip.ft)` }}}
+endsnippet
