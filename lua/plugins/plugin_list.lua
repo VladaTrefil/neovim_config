@@ -28,6 +28,7 @@ return {
 	},
 
 	['Shatur/neovim-session-manager'] = {
+		commit = 'a0b9d25154be573bc0f99877afb3f57cf881cce7',
 		config = function()
 			require('plugins.config.session_manager')
 		end,
@@ -202,6 +203,7 @@ return {
 	},
 
 	['stevearc/conform.nvim'] = {
+		commit = '8b5e13c1af3211f5bb5e091992aba8629312e514',
 		opt = true,
 		event = 'User PackLoad',
 		config = function()
